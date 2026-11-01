@@ -139,6 +139,18 @@ python train_ai.py
 | `docs/` | Screenshot and the old-version analysis report (PDF / DOCX) |
 | `font/` | Bundled open-source font ZCOOL KuaiLe (SIL OFL 1.1) |
 
+## Reading order
+
+| # | File | What to look at |
+|:---:|---|---|
+| 1 | `ai_model.py` | the network itself, 34 lines — start from the input/output shape |
+| 2 | `ai_helper.py` | how one frame becomes one action; also how the rule teacher thinks |
+| 3 | `train_ai.py` | the 110-line training loop, weighted cross-entropy |
+| 4 | `多进程录制.py` | how the dataset is generated — the most underrated part |
+| 5 | `game.py` | the game loop; for the AI it is just one extra model call per frame |
+
+About 700 lines in total — enough to change the input, the network or the teacher yourself.
+
 ## Post-mortem: why the first version only scored ~20 on Novice
 
 `docs/old-version-analysis.pdf` analyses **the first version**, which scored ~20 on Novice and single digits everywhere else. Three root causes, all since fixed:
