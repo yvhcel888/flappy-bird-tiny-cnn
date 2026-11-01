@@ -126,6 +126,7 @@ GPU 上几秒一个 epoch，纯 CPU 也能跑完，只是慢一些。
 | `data/*.npz` | 训练集（169 920 帧，16 MB） |
 | `flappy_ai.pth` | 训练好的权重（6.6 MB） |
 | `docs/` | 截图、旧版本分析报告（PDF / DOCX） |
+| `font/` | 开源字体站酷快乐体（ZCOOL KuaiLe，SIL OFL 1.1） |
 
 ## 旧版本复盘：为什么一开始只有新手能拿 20 分
 
@@ -153,8 +154,8 @@ GPU 上几秒一个 epoch，纯 CPU 也能跑完，只是慢一些。
 | 背景图（昼 / 午 / 夜 × 晴 / 雨 / 雪，共 9 张） | Gemini 生成 |
 | 小鸟精灵 | [OpenGameArt](https://opengameart.org/) 上的 bevouliin 素材包，原始名字是 `Blue Bird Sprite Sheets`、`Flappy Pink Bird`、`flying flappy bird game asset sprite sheets art`、`Free Green Flappy Stupid Bird sprite sheets`（原包都保留在 `img/bird/` 下，`Transparent/` 是按颜色重命名的版本） |
 | 管道 | 同样来自 [OpenGameArt](https://opengameart.org/)（和小鸟是同一个素材站） |
-| GameOver 图 | 项目自带 |
-| 字体 | `font/STKAITI.TTF`（华文楷体）有版权，**不随仓库分发**；本机没有该文件时游戏会自动退回系统字体 |
+| GameOver 图 | 作者自己画的 |
+| 字体 | 仓库自带 **站酷快乐体**（`font/ZCOOLKuaiLe-Regular.ttf`，SIL OFL 1.1，可自由使用）；华文楷体 `STKAITI.TTF` 有版权，不随仓库分发 |
 
 美术素材的授权请遵循原作者条款，MIT 许可证只覆盖代码。
 

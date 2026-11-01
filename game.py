@@ -102,10 +102,15 @@ def game(speed, bird_num, is_ai, auto_record=False, max_episodes=10):
     fade = 0.0
     Pipe.load_base("./img/pipe/green_pipe.png")
     pygame.display.set_caption("Flappy Bird")
-    # 华文楷体是有版权的商业字体，不随仓库分发；本机没有这个文件时退回系统字体
-    font_path = "./font/STKAITI.TTF"
-    font = (pygame.font.Font(font_path, 20) if os.path.exists(font_path)
-            else pygame.font.SysFont("microsoftyahei,simhei,pingfangsc,arial", 20))
+    # 字体：优先用仓库自带的开源字体（站酷快乐体，OFL 1.1）；本机若还留着华文楷体就沿用它；
+    # 都没有则退回系统字体。
+    font = None
+    for font_file in ("./font/ZCOOLKuaiLe-Regular.ttf", "./font/STKAITI.TTF"):
+        if os.path.exists(font_file):
+            font = pygame.font.Font(font_file, 20)
+            break
+    if font is None:
+        font = pygame.font.SysFont("microsoftyahei,simhei,pingfangsc,arial", 20)
     clock = pygame.time.Clock()
 
     img_cache = {}

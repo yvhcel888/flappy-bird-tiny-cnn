@@ -17,8 +17,8 @@ env/
 .DS_Store
 Thumbs.db
 
-# 华文楷体是有版权的商业字体，不随仓库分发（缺字体时游戏会退回系统字体）
-font/
+# 华文楷体是有版权的商业字体，不随仓库分发（仓库里放的是开源字体站酷快乐体）
+font/STKAITI.TTF
 
 # check_data.py 导出的预览图
 data/view_images/

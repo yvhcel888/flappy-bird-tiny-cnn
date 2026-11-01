@@ -123,6 +123,7 @@ python train_ai.py
 | `data/*.npz` | Training set (169,920 frames, 16 MB) |
 | `flappy_ai.pth` | Trained weights (6.6 MB) |
 | `docs/` | Screenshot and the old-version analysis report (PDF / DOCX) |
+| `font/` | Bundled open-source font ZCOOL KuaiLe (SIL OFL 1.1) |
 
 ## Post-mortem: why the first version only scored ~20 on Novice
 
@@ -150,8 +151,8 @@ python train_ai.py
 | Backgrounds (day / noon / night × sunny / rain / snow) | Generated with Gemini |
 | Bird sprites | [OpenGameArt](https://opengameart.org/), packs by bevouliin: `Blue Bird Sprite Sheets`, `Flappy Pink Bird`, `flying flappy bird game asset sprite sheets art`, `Free Green Flappy Stupid Bird sprite sheets` (all kept under `img/bird/`; `Transparent/` is a recoloured copy) |
 | Pipes | Also from [OpenGameArt](https://opengameart.org/), the same site as the birds |
-| Game-over art | Bundled with the project |
-| Font | `font/STKAITI.TTF` is a commercial Chinese font and is **not** distributed here; the game falls back to a system font when it is missing |
+| Game-over art | Drawn by the author |
+| Font | **ZCOOL KuaiLe** (`font/ZCOOLKuaiLe-Regular.ttf`, SIL OFL 1.1) ships with the repo; the commercial `STKAITI.TTF` is not distributed |
 
 Please follow the original authors' terms for the art assets. The MIT licence covers code only.
 
