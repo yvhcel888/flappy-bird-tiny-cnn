@@ -149,7 +149,8 @@ python train_ai.py
 |---|---|
 | Backgrounds (day / noon / night × sunny / rain / snow) | Generated with Gemini |
 | Bird sprites | [OpenGameArt](https://opengameart.org/), packs by bevouliin: `Blue Bird Sprite Sheets`, `Flappy Pink Bird`, `flying flappy bird game asset sprite sheets art`, `Free Green Flappy Stupid Bird sprite sheets` (all kept under `img/bird/`; `Transparent/` is a recoloured copy) |
-| Pipes, game-over art | Bundled with the project |
+| Pipes | Also from [OpenGameArt](https://opengameart.org/), the same site as the birds |
+| Game-over art | Bundled with the project |
 | Font | `font/STKAITI.TTF` is a commercial Chinese font and is **not** distributed here; the game falls back to a system font when it is missing |
 
 Please follow the original authors' terms for the art assets. The MIT licence covers code only.
