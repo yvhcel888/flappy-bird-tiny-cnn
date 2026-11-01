@@ -1,0 +1,23 @@
+# Flappy Bird TinyCNN 依赖
+# 安装：pip install -r requirements.txt
+#
+# 开发环境：Python 3.12 / Windows，以下版本都验证过；
+# 只装 CPU 版 PyTorch 也能完整跑通（训练会慢一些）。
+
+# 游戏本体与 AI 推理
+pygame>=2.5
+numpy>=1.24
+torch>=2.0
+
+# check_data.py 把 npz 里的帧导出成 png 时才用到
+pillow>=9.0
+
+# 说明：界面用的是 Python 自带的 tkinter，不需要 pip 安装。
+#       Windows / macOS 的官方安装包默认带；
+#       Linux 上 import tkinter 报错时先装系统包：
+#       Debian/Ubuntu: sudo apt install python3-tk
+#       Fedora:        sudo dnf install python3-tkinter
+
+# 注意：torch 装哪个版本取决于有没有显卡。
+#       想用 GPU 训练，按 https://pytorch.org 的说明选对应的 CUDA 轮子；
+#       不装 CUDA 就用默认的 CPU 版，游戏和推理完全不受影响。
