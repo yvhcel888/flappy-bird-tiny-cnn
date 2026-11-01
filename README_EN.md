@@ -1,6 +1,6 @@
 # Flappy Bird TinyCNN
 
-> A tiny **1.66M-parameter CNN** that plays all five difficulty levels of Flappy Bird from a **160×80** grayscale thumbnail.
+> A **tiny CNN case study** you can read end to end: a 160×80 grayscale frame in, "flap / glide" out.
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c.svg)](https://pytorch.org/)
@@ -13,16 +13,28 @@
 
 ---
 
-## Highlights
+## What this is
+
+Not a “pip install and watch a black box” demo, but a **complete yet small** supervised-learning loop:
+
+a rule-based teacher plays the game → six processes record 170k frames of (screen, action) → a 1.66M-parameter CNN imitates them → the weights go back into the game and play in real time.
+
+About 1,100 lines of Python in total, no RL framework, no third-party training library, and `ai_model.py` is 34 lines.
+No GPU needed to run it: clone and play, or retrain it yourself.
+
+**Who it is for**: anyone who wants a first complete pass over “image in → convolution → action out”, or a course project small enough to read, modify and demo.
+
+## At a glance
 
 | | |
 |---|---|
-| 🪶 **Tiny input** | 160×80 grayscale frame + 2 scalars per step; 1.66M parameters, 6.6 MB |
-| ⚡ **Real-time on CPU** | 1.3 ms per frame — 60 FPS with no GPU at all |
-| 🎯 **One net, five levels** | Same weights for all difficulties; the level is just a scalar input |
-| 🏆 **141 points on Hell** | 141 in an automated run; nearly 200 in a manual session |
-| 🔁 **Fully reproducible** | Capture → train → play, all in this repo; the teacher is pure geometry and needs no GPU |
-| 📦 **Data + weights included** | 170k frames of training data and a trained checkpoint, ready to play or retrain |
+| Input | one 1×80×160 grayscale frame + 2 speed scalars |
+| Network | 3 conv + 3 FC layers, 1.66M parameters (`ai_model.py`, 34 lines) |
+| Code | 11 scripts, ~1,100 lines of Python |
+| Data | 169,920 frames / 6 speed levels / 16 MB |
+| Training | 30 epochs, minutes on a single GPU (CPU works too) |
+| Inference | 1.3 ms per frame on CPU, a steady 60 FPS |
+| Score | survives every difficulty; 141 points on Hell in one run |
 
 ## Results
 
@@ -39,6 +51,8 @@ Automated evaluation (CPU inference, 3 episodes per level, each capped at 4000 f
 All 15 episodes were still alive when the cap hit, so these numbers are lower bounds.
 
 With the cap raised to 10 000 frames (~2.7 min) on Hell difficulty, two runs scored **141** and 63 — it can clear well over a hundred pipes, but long runs still end in the occasional crash. A manual session reached close to 200.
+
+> Conversely, Hell can also end at 0 points right at the first pipe; the reason is in [Known limitations](#known-limitations) below — no cherry-picking.
 
 ## Quick start
 
@@ -141,6 +155,9 @@ python train_ai.py
 
 - **Single frame**: the network cannot see which way a pipe is moving, only a `speed` scalar; frame-rate jitter (dt changes) is out of distribution.
 - **Coarse spatial resolution**: three pools leave 60 px vertical resolution, so Hell occasionally clips a pipe during a transition.
+- **Hell can end at zero, before the first pipe**: the pipe spacing of 1350 px is wider than the screen, so the next pipe appears only 0.55 s before impact.
+  When the gap also sits high (a tall bottom pipe), there is even less time to climb, and unstable frame rates make it worse — occasionally the bird
+  crashes without scoring. It usually clears dozens to hundreds of pipes on the same level, so this is the physics of the level, not a broken model.
 - **Teacher-bounded**: pure imitation learning cannot exceed the rule it imitates; going further needs RL.
 - **Tuned for 1200×600 @ 60 FPS**: physics were recorded at dt = 1/60, so heavy frame drops hurt.
 
