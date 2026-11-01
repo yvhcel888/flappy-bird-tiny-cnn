@@ -95,7 +95,7 @@ python train_ai.py
 
 ### The teacher: four lines of geometry
 
-`ai_helper.RuleBot` does exactly four things, and it can survive indefinitely on Hell difficulty:
+`ai_helper.RuleBot` does exactly four things, and it clears hundreds of pipes on Hell difficulty:
 
 1. **Always aim at the next pipe's safe height** (gap centre + half a hop), no matter how far away the pipe is;
 2. **Flap whenever below that height**, allowing consecutive flaps — it climbs at up to 450 px/s, far faster than a single 67 px hop;
